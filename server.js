@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config()
 const cors = require("cors");
 
 // Local Variables...
@@ -15,7 +16,7 @@ const router = require("./routes/routes");
 app.use(cors());
 
 
-
+console.log(process.env.MONGO_URI);
 //Allow Body | Otherwise body return undefined...
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Database Connectivity...
-mongoose.connect("mongodb+srv://soland:soland@cluster0.ydhqm4w.mongodb.net/soland");
+mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.on("connected", () => console.log("Database is Connected"));
 mongoose.connection.on("error", (err) => console.log(err));
 
