@@ -16,7 +16,7 @@ const router = require("./routes/routes");
 app.use(cors());
 
 
-console.log(process.env.MONGO_URI);
+
 //Allow Body | Otherwise body return undefined...
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +30,12 @@ mongoose.connection.on("error", (err) => console.log(err));
 
 
 // All Routes | API's...
+
 app.use(router);
+app.get("/home" , (req, res)=>{
+    res.send("home")
+
+})
 
 
 // Server Listening
