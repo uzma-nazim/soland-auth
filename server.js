@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieParser = require('cookie-parser');
 require('dotenv').config()
 const cors = require("cors");
 
@@ -7,6 +8,8 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+//for cookie
+app.use(cookieParser());
 
 // Router's Connectivity... 
 const router = require("./routes/routes");
